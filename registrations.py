@@ -42,6 +42,12 @@ def read_float(message):
         except ValueError:
             print("Digite um número válido")
 
+def findById(products, product_id):
+    for p in products:
+        if p["id"] == product_id:
+            return p 
+    return None
+
 def include(products):
     new_id = max((p["id"] for p in products), default=0) + 1
     product = {
@@ -55,5 +61,28 @@ def include(products):
     save_data(products)
     print("Produto incluído com sucesso!")
 
+def change(products):
+    product_id = read_intNumber("Id: ")
+    product = findById(products, product_id)
+    if product is None:
+        print("Não foi possível localizar esse produto.")
+        return
+    product["name"] = read_text("Novo Nome: ")
+    product["category"] = read_text("Nova Categoria: ")
+    product["price"] = read_text("Novo Preço: ")
+    product["quantity"] = read_text("Nova Quantidade: ")
+    save_data(products)
+    print("Produto alterado com sucesso!")
+
+def delete(products):
+    product_id = read_intNumber("Id: ")
+    product = findById(products, product_id)
+    if product is None:
+        print("Não foi possível localizar esse produto.")
+        return
+    products.remove(product)
+    save_data(products)
+    print("Produto excluído com sucesso!")
+
 products = load_data()
-include(products)
+change(products)
