@@ -42,3 +42,18 @@ def read_float(message):
         except ValueError:
             print("Digite um número válido")
 
+def include(products):
+    new_id = max((p["id"] for p in products), default=0) + 1
+    product = {
+        "id": new_id,
+        "name": read_text("Nome: "),
+        "category": read_text("Categoria: "),
+        "price": read_float("Preco: "),
+        "quantity": read_intNumber("Quantidade: ")
+    }
+    products.append(product)
+    save_data(products)
+    print("Produto incluído com sucesso!")
+
+products = load_data()
+include(products)
