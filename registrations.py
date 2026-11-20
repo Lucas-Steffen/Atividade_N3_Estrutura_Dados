@@ -57,6 +57,7 @@ def include(products):
         "price": read_float("Preço: "),
         "quantity": read_intNumber("Quantidade: ")
     }
+    
     products.append(product)
     save_data(products)
     print("Produto incluído com sucesso!")
@@ -67,10 +68,12 @@ def change(products):
     if product is None:
         print("Não foi possível localizar esse produto.")
         return
+    
     product["name"] = read_text("Novo Nome: ")
     product["category"] = read_text("Nova Categoria: ")
     product["price"] = read_float("Novo Preço: ")
     product["quantity"] = read_intNumber("Nova Quantidade: ")
+
     save_data(products)
     print("Produto alterado com sucesso!")
 
