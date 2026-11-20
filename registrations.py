@@ -54,7 +54,7 @@ def include(products):
         "id": new_id,
         "name": read_text("Nome: "),
         "category": read_text("Categoria: "),
-        "price": read_float("Preco: "),
+        "price": read_float("Preço: "),
         "quantity": read_intNumber("Quantidade: ")
     }
     products.append(product)
@@ -69,8 +69,8 @@ def change(products):
         return
     product["name"] = read_text("Novo Nome: ")
     product["category"] = read_text("Nova Categoria: ")
-    product["price"] = read_text("Novo Preço: ")
-    product["quantity"] = read_text("Nova Quantidade: ")
+    product["price"] = read_float("Novo Preço: ")
+    product["quantity"] = read_intNumber("Nova Quantidade: ")
     save_data(products)
     print("Produto alterado com sucesso!")
 
@@ -80,9 +80,12 @@ def delete(products):
     if product is None:
         print("Não foi possível localizar esse produto.")
         return
+
+    confirm = read_text("Tem certeza que seja excluir esse produto (s/n)? ").lower()
+    if confirm != 's':
+        print("Exclusão cancelada")
+        return
+    
     products.remove(product)
     save_data(products)
     print("Produto excluído com sucesso!")
-
-products = load_data()
-change(products)
