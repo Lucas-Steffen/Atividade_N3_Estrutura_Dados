@@ -5,5 +5,19 @@
         "category": "Shampoo",
         "price": 39.9,
         "quantity": 1
+    },
+    {
+        "id": 4,
+        "name": "Ração Pedigree",
+        "category": "Rações",
+        "price": 999.0,
+        "quantity": 1
+    },
+    {
+        "id": 5,
+        "name": "PC Xuxa",
+        "category": "Computadores",
+        "price": 15.0,
+        "quantity": 50
     }
 ]
