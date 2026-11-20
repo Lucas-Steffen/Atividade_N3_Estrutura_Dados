@@ -13,7 +13,32 @@ def load_data():
     with open(FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
-lista = load_data()
-lista.append({"id": len(lista) + 1, "nome": "Ana", "telefone": "9999-0000"})
-save_data(lista)
-print(lista)
+def read_text(message):
+    while True:
+        value = input(message).strip()
+        if value:
+            return value
+        print("Campo obrigatório")
+
+def read_intNumber(message):
+    while True:
+        try:
+            value = int(input(message))
+            if value < 0:
+                print("Não pode ser negativo.")
+            else:
+                return value
+        except ValueError:
+            print("Digite um número válido")
+
+def read_float(message):
+    while True:
+        try:
+            value = float(input(message).replace(",", "."))
+            if value < 0:
+                print("Não pode ser negativo.")
+            else:
+                return value
+        except ValueError:
+            print("Digite um número válido")
+
